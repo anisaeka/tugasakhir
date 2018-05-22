@@ -62,8 +62,8 @@
 
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>			
-			<li><a href="kelola_buku.php"><span class="glyphicon glyphicon-briefcase"></span>  Data Jadwal</a></li>
+			<li class="active"><a href="<?php echo site_url('welcome/')?>"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>			
+			<li><a href="<?php echo site_url('jadwal/')?>"><span class="glyphicon glyphicon-briefcase"></span>  Data Jadwal</a></li>
 			<li><a href="kelola_kategori.php"><span class="glyphicon glyphicon-briefcase"></span>  Data Ruang</a></li>        												
 			<li><a href="kelola_pengguna.php"><span class="glyphicon glyphicon-user"></span>  Data Pengguna</a></li>
 			<li><a href="../../uas2/logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>			
