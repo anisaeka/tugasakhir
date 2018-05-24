@@ -1,14 +1,13 @@
-<!-- kelas/create_kelas.php -->
-
 <?php $this->load->view('layouts/header') ?>
 
 <div class="container">
-  <legend>Tambah Data Kelas</legend>
+  <legend>Edit Kelas</legend>
   <div class="col-xs-12 col-sm-12 col-md-12">
-  <?php echo form_open('kelas/store'); ?>
+  <?php echo form_open('kelas/update/'.$data->id); ?>
+    <?php echo form_hidden('id', $data->id) ?>
     <div class="form-group">
-      <label for="nama_kelas">Kelaaass</label>
-      <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukkan Nama Kelas">
+      <label for="kelas">Kelas</label>
+      <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Masukkan Kelas" value="<?php echo $data->kelas ?>">
     </div>
 
     <a class="btn btn-info" href="<?php echo site_url('kelas/') ?>">Kembali</a>
@@ -16,5 +15,4 @@
   <?php echo form_close() ?>
   </div>
 </div>
-
 <?php $this->load->view('layouts/footer') ?>
