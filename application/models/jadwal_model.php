@@ -5,10 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class jadwal_model extends CI_Model {
 
-    public function list()
+    public function list($limit, $start)
 {
-  $query = $this->db->get('jadwal_kuliah');
-  return $query->result();
+  $query = $this->db->get('jadwal_kuliah',$limit, $start);
+  return ($query->num_rows() > 0) ? $query->result() : false;
 }
 
 public function insert($data = [])
@@ -52,6 +52,18 @@ public function delete($id)
       $query= $this->db->delete('jadwal_kuliah');
      
 }
+
+public function getTotal()
+{
+  return $this->db->count_all('jadwal_kuliah');
+}
+
+public function search($search)
+    {
+
+      $this->db->where('hari', $search);
+        return $query->result();
+    }
 
     
 

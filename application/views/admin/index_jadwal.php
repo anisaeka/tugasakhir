@@ -1,8 +1,14 @@
 <?php $this->load->view('layouts/header') ?>
 
 <div class="container">
+
+<input class="form-control" type="text" name="search" value="" placeholder="Search...">
+<a class="btn btn-primary" href="<?php echo site_url('jadwal/search') ?>">
+            Go
+          </a>
   <legend>Data Jadwal</legend>
   <div class="col-xs-12 col-sm-12 col-md-12">
+  <?php if (isset($jadwal)) { ?>
     <table class="table table-striped">
       <thead>
         <th>No</th>
@@ -81,6 +87,10 @@
         <?php } ?>
       </tbody>
     </table>
+    <?php echo $links ?>
+  <?php } else { ?>
+  <div>Tidak ada data</div>
+  <?php } ?>
   </div>
 </div>
 
