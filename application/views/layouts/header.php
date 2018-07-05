@@ -46,7 +46,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>						
 				</div>
-				
+				Mail.com123
 			</div>
 		</div>
 	</div>
@@ -66,7 +66,7 @@
 			<li><a href="<?php echo site_url('jadwal/')?>"><span class="glyphicon glyphicon-briefcase"></span>  Data Jadwal</a></li>
 			<li><a href="kelola_kategori.php"><span class="glyphicon glyphicon-briefcase"></span>  Data Ruang</a></li>        												
 			<li><a href="kelola_pengguna.php"><span class="glyphicon glyphicon-user"></span>  Data Pengguna</a></li>
-			<li><a href="../../uas2/logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>			
+			<li><a href="<?php echo site_url('user/logout')?>"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>			
 		</ul>
 	</div>
 	<div class="col-md-10">
