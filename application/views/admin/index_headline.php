@@ -1,0 +1,63 @@
+<?php $this->load->view('layouts/header') ?>
+
+<div class="container">
+
+<input class="form-control" type="text" name="search" value="" placeholder="Search...">
+<a class="btn btn-primary" href="<?php echo site_url('ruang/search') ?>">
+            Go
+          </a>
+  <legend>Data Headline</legend>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+  <?php if (isset($headline)) { ?>
+    <table class="table table-striped">
+      <thead>
+        <th>No</th>
+        <th>Keterangan</th>
+        <th>Image</th>
+        <th>
+          <a class="btn btn-primary" href="<?php echo site_url('headline/create') ?>">
+            Tambah
+          </a>
+        </th>
+      </thead>
+      <tbody>
+       <?php $number = 1; foreach($headline as $row) { ?>
+        <tr>
+          <td>
+            <a href="<?php echo site_url('headline/show/'.$row->id) ?>">
+              <?php echo $number++ ?>
+            </a>
+          </td>
+          <td>
+            <a href="<?php echo site_url('headline/show/'.$row->id) ?>">
+              <?php echo $row->keterangan ?>
+            </a>
+          </td>
+          <td>
+          
+          <img class="card-img-top" width="150" height="150" src="<?php echo base_url() .'./assets/image/'. $row->gambar ?>" alt="Card image cap">
+            
+          </td>
+          
+         
+          
+          <td>
+            <?php echo form_open('headline/destroy/'.$row->id)  ?>
+            <a class="btn btn-info" href="<?php echo site_url('headline/edit/'.$row->id) ?>">
+              Ubah
+            </a>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
+            <?php echo form_close() ?>
+          </td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+    <?php echo $links ?>
+  <?php } else { ?>
+  <div>Tidak ada data</div>
+  <?php } ?>
+  </div>
+</div>
+
+<?php $this->load->view('layouts/footer') ?>
