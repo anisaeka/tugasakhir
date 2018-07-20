@@ -2,6 +2,8 @@
 
 <div class="container">
 
+
+
 <input class="form-control" type="text" name="search" value="" placeholder="Search...">
 <a class="btn btn-primary" href="<?php echo site_url('jadwal/search') ?>">
             Go
@@ -66,7 +68,12 @@
           </td>
           <td>
             <a href="<?php echo site_url('jadwal/show/'.$row->id) ?>">
-              <?php echo $row->nama_ruang ?>
+              <?php foreach($ruang as $key){ 
+        if($key->nama_ruang == $row->nama_ruang){
+          echo $key->nama_ruang;
+        }
+
+        }?>
             </a>
           </td>
           <td>

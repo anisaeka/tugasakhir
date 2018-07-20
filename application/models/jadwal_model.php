@@ -65,7 +65,11 @@ public function search($search)
         return $query->result();
     }
 
-    
+    public function ruang()
+    {
+      $query = $this->db->get('ruang_kelas');
+      return $query->result();
+    }
 
 
 }

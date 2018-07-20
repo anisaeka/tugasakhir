@@ -1,4 +1,3 @@
-
 <?php
 
 
@@ -50,17 +49,20 @@ class Jadwal extends CI_Controller {
 
 
         $jadwal = $this->jadwal_model->list($limit,$start);
+        
         $data=[ 
           'jadwal'=> $jadwal,
+          'ruang' => $this->jadwal_model->ruang(),
           'links' => $this->pagination->create_links()
         ];
       }
-        $this->load->view('admin/index_jadwal',$data);
+        $this->load->view('admin/index_jadwal', $data);
     }
 
     public function create(){
-        
-        $this->load->view('admin/create_jadwal');
+        $this->load->model('jadwal_model');
+        $data =[ 'ruang' => $this->jadwal_model->ruang() ];
+        $this->load->view('admin/create_jadwal', $data);
         
     }
     public function store()
@@ -107,7 +109,8 @@ public function show($id)
     
     $jadwal = $this->jadwal_model->show($id);
     $data = [
-    'data' => $jadwal
+    'data' => $jadwal,
+    'ruang' => $this->jadwal_model->ruang()
   ];
   $this->load->view('admin/show_jadwal', $data);
 }
@@ -119,7 +122,8 @@ public function edit($id)
       $this->load->model('jadwal_model');
       $jadwal = $this->jadwal_model->show($id);
       $data = [
-        'data' => $jadwal
+        'data' => $jadwal,
+        'ruang' => $this->jadwal_model->ruang()
       ];
       if(isset($_POST['simpan'])){
           $this->update($id);

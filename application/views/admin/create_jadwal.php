@@ -26,11 +26,13 @@
     </div><div class="form-group">
       <label for="akhir_jam">Sampai Jam</label>
       <input type="time" class="form-control" id="akhir_jam" name="akhir_jam" placeholder="Masukkan Jam Berakhirnya ">
-    <div class="form-group">
-      <label for="nama_ruang">Ruang</label>
+      <div class="form-group">
+      <label for="nama_ruang">Ruang Kelas</label>
       <select name="nama_ruang" class="form-control" required>
-      <option> pilih Ruang </option>
-      <option> asf </option>
+      <option selected> pilih ruang kelas </option>
+      <?php foreach($ruang as $key){ ?>
+      <option value="<?php echo $key->nama_ruang ;?>">  <?php echo $key->nama_ruang ; ?></option>
+      <?php } ?>
       </select>
     </div>
     <div class="form-group">
@@ -38,7 +40,7 @@
       <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Masukkan Kelas">
     </div>
 
-    <a class="btn btn-info" href="<?php echo site_url('jabatan/') ?>">Kembali</a>
+    <a class="btn btn-info" href="<?php echo site_url('jadwal/') ?>">Kembali</a>
     <button type="submit" class="btn btn-primary">OK</button>
   <?php echo form_close() ?>
   </div>

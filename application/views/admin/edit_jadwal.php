@@ -26,11 +26,18 @@
     </div><div class="form-group">
       <label for="akhir_jam">Sampai Jam</label>
       <input type="time" class="form-control" id="akhir_jam" name="akhir_jam" placeholder="Masukkan Jam Berakhirnya " value="<?php echo $data->akhir_jam ?>">
-    <div class="form-group">
-      <label for="nama_ruang">Ruang</label>
-      <select name="nama_ruang" class="form-control" value="<?php echo $data->nama_ruang ?>" required >
-      <option> pilih Ruang </option>
-      <option> asf </option>
+      <div class="form-group">
+      <label for="nama_ruang">Ruang kelas</label>
+      <select name="nama_ruang" class="form-control" required>
+      <option selected> pilih ruang kelas </option>
+      <?php foreach($ruang as $key){ 
+        if($key->nama_ruang == $data->nama_ruang){ ?>
+       
+       <option selected> <?php echo $key->nama_ruang ; ?></option>
+       <?php } ?>
+       
+       <option value="<?php echo $key->nama_ruang ;?>">  <?php echo $key->nama_ruang ; ?></option>
+      <?php } ?>
       </select>
     </div>
     <div class="form-group">

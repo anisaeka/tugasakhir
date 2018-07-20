@@ -30,8 +30,12 @@
      <?php echo $data->akhir_jam ?>
     </div>
     <div class="form-group">
-      <label for="nama_ruang">Ruang : </label>
-     <?php echo $data->nama_ruang ?>
+      <label for="nama_ruang">Ruang Kelas : </label>
+      <?php foreach($ruang as $key){ 
+        if($key->nama_ruang == $data->nama_ruang){ 
+            echo $key->nama_ruang ; 
+        }
+    }?>
     </div>
     <div class="form-group">
       <label for="kelas">Kelas : </label>
