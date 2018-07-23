@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Sistem Informasi Pengelola Jadwal</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <!-- Core CSS - Include with every page -->
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/js/jquery-ui/jquery-ui.css')?>">
+	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.js')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui/jquery-ui.js')?>"></script>	
+
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -44,29 +49,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="">Pencarian Kelas JTI</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li class="active"><a href="<?php echo site_url('user/index')?>">Home</a></li>
+        <li><a href="<?php echo site_url('user_jadwal/')?>">Jadwal</a></li>
+        <li><a href="<?php echo site_url('user_pencarian/')?>">Pencarian</a></li>      
       </ul>
-<!--<ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo site_url('user/login_form')?>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>-->
+    
       <ul class="nav navbar-nav navbar-right">
-      <?php if(!$this->session->userdata('logged_in')) : ?>
-
-                    <div class="btn-group" role="group" aria-label="Data baru">            
-                       <li> <?php echo anchor('user/login', 'Login', array('class' => 'glyphicon glyphicon-log-in')); ?></li>
-                    </div>
-
-                <?php endif; ?>
-    </ul>
+        <li><a href="<?php echo site_url('user/login_form')?>"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+      </ul>
   <ul class="nav navbar-nav navbar-right">
-      <?php if($this->session->userdata('logged_in')) : ?>
+    <?php if(!$this->session->userdata('logged_in')) : ?>
+        <div class="btn-group" role="group" aria-label="Data baru">            
+        <li> <?php echo anchor('user/login', 'Login', array('class' => 'glyphicon glyphicon-log-in')); ?></li>
+        </div>
+    <?php endif; ?>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+     <?php if($this->session->userdata('logged_in')) : ?>
                     <div class="btn-group" role="group" aria-label="Data baru">
                         <li><?php echo anchor('user/logout', 'Logout', array('class' => 'glyphicon glyphicon-log-out')); ?></li>
                     </div>
@@ -75,6 +78,3 @@
     </div>
   </div>
 </nav>
-
-<br>
-

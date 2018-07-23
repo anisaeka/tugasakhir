@@ -1,7 +1,5 @@
-
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p> </p>
 </footer>
-
 </body>
 </html>
