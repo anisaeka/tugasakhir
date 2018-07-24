@@ -63,10 +63,6 @@ public function search($search)
       $query = $this->db->get("ruang_kelas");
         return $query->result();
     }
-
-    
-
-
 }
 
 /* End of file ModelName.php */

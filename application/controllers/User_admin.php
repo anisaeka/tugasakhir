@@ -66,7 +66,9 @@ class user_admin extends CI_Controller {
         $this->load->model('user_admin_model');
         $search = $this->user_admin_model->search($this->input->post('search'));
         $data = [
-        'user_admin' => $search,
+        'user' => $search,
+        'user_level' => $this->user_admin_model->user_level(),
+        'links' => $this->pagination->create_links()
       ];
       $this->load->view('admin/index_user', $data);
     } else {

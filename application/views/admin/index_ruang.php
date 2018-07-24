@@ -1,5 +1,4 @@
 <?php $this->load->view('layouts/header') ?>
-
 <div class="container">
 
 <?php echo form_open("Ruang/search")?>

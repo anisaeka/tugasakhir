@@ -2,7 +2,7 @@
 
 <div class="container">
 
-<?php echo form_open("User/search")?>
+<?php echo form_open("User_admin/search")?>
 <input class="form-control" type="text" name="search" value="" placeholder="Search...">
 <input type="submit" class="btn btn-primary" value="Search">
   <legend>Data user</legend>

@@ -31,13 +31,14 @@ public function delete($id)
 
 public function getTotal()
 {
-  return $this->db->count_all('jadwal_kuliah');
+  return $this->db->count_all('headline');
 }
 
 public function search($search)
     {
       $this->db->select('*');
       $this->db->like('id',$search);
+      $this->db->or_like('keterangan',$search);
       $query = $this->db->get("headline");
       return $query->result();
     }

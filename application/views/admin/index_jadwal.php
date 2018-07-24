@@ -20,6 +20,7 @@
         <th>Jam Berakhir</th>
         <th>Nama Ruang</th>
         <th>Kelas</th>
+        <th>Status</th>
         <th>
           <a class="btn btn-primary" href="<?php echo site_url('jadwal/create') ?>">
             Tambah
@@ -77,6 +78,11 @@
           <td>
             <a href="<?php echo site_url('jadwal/show/'.$row->id) ?>">
               <?php echo $row->kelas ?>
+            </a>
+          </td>
+          <td>
+            <a href="<?php echo site_url('jadwal/show/'.$row->id) ?>">
+              <?php echo $row->status ?>
             </a>
           </td>
           

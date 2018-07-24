@@ -90,7 +90,8 @@ class Jadwal extends CI_Controller {
             'mulai_jam'=>$this->input->post('mulai_jam'),
             'akhir_jam'=>$this->input->post('akhir_jam'),
             'nama_ruang'=>$this->input->post('nama_ruang'),
-            'kelas'=>$this->input->post('kelas')
+            'kelas'=>$this->input->post('kelas'),
+            'status'=>$this->input->post('status')
         ];
         $rules = [
           [

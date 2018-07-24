@@ -11,7 +11,7 @@
   <?php if (isset($headline)) { ?>
     <table class="table table-striped">
       <thead>
-        <th>No</th>
+        <th>Id</th>
         <th>Keterangan</th>
         <th>Image</th>
         <th>
@@ -53,7 +53,7 @@
         <?php } ?>
       </tbody>
     </table>
-    <?php echo $links ?>
+    <?php echo (isset($links) ? $links : "") ?>
   <?php } else { ?>
   <div>Tidak ada data</div>
   <?php } ?>
