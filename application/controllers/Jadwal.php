@@ -59,6 +59,20 @@ class Jadwal extends CI_Controller {
         $this->load->view('admin/index_jadwal', $data);
     }
 
+    public function search(){
+      if($this->input->post('search') != null){
+        $this->load->model('jadwal_model');
+        $search = $this->jadwal_model->search($this->input->post('search'));
+        $data = [
+        'jadwal' => $search,
+        'ruang' => $this->jadwal_model->ruang(),
+      ];
+      $this->load->view('admin/index_jadwal', $data);
+    } else {
+        echo"data tidak ditemukan";
+      }
+    }
+
     public function create(){
         $this->load->model('jadwal_model');
         $data =[ 'ruang' => $this->jadwal_model->ruang() ];
@@ -155,20 +169,7 @@ public function destroy($id)
      
 }
 
-public function search(){
- 
-  if($this->input->post('search')){
-    $this->load->model('jadwal_model');
-    $search= $this->jadwal_model->search($search);
-  
-    $data = [
-    'data' => $search
-  ];
-  $this->load->view('admin/index-jadwal', $data);
-} else {
-    echo"data tidak ditemukan";
-  }
-}
+
 
 
 

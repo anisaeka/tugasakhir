@@ -56,7 +56,11 @@ public function getTotal()
 public function search($search)
     {
 
-      $this->db->where('ruang_kelas', $search);
+      $this->db->select('*');
+      $this->db->like('nama_ruang',$search);
+      $this->db->or_like('jenis_ruang',$search);
+      $this->db->or_like('gedung',$search);
+      $query = $this->db->get("ruang_kelas");
         return $query->result();
     }
 

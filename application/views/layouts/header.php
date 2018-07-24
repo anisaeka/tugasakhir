@@ -4,18 +4,21 @@
 <head>
 	
 	<title>Admin JTI</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css') ?>">
+
+   <!-- Core CSS - Include with every page -->
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/js/jquery-ui/jquery-ui.css')?>">
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js')?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js')?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.js')?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui/jquery-ui.js')?>"></script>	
+
 </head>
 <body>
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="../../UAS2/page/beranda.php" class="navbar-brand">Sistem Informasi Pengelola Jadwal </a>
+				<a href="" class="navbar-brand">Sistem Informasi Pengelola Jadwal </a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -63,9 +66,9 @@
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="<?php echo site_url('welcome/')?>"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>			
-			<li><a href="<?php echo site_url('jadwal/')?>"><span class="glyphicon glyphicon-briefcase"></span>  Data Jadwal</a></li>
+			<li><a href="<?php echo site_url('jadwal/')?>"><span class="glyphicon glyphicon-list-alt"></span>  Data Jadwal</a></li>
 			<li><a href="<?php echo site_url('ruang/')?>"><span class="glyphicon glyphicon-briefcase"></span>  Data Ruang</a></li>      
-			<li><a href="<?php echo site_url('headline/')?>"><span class="glyphicon glyphicon-briefcase"></span>  Headline</a></li>  												
+			<li><a href="<?php echo site_url('headline/')?>"><span class="glyphicon glyphicon-picture"></span>  Headline</a></li>  												
 			<li><a href="<?php echo site_url('user_admin/')?>"><span class="glyphicon glyphicon-user"></span>  Data Pengguna</a></li>
 			<li><a href="<?php echo site_url('user/logout')?>"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>			
 		</ul>

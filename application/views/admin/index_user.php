@@ -2,10 +2,9 @@
 
 <div class="container">
 
+<?php echo form_open("User/search")?>
 <input class="form-control" type="text" name="search" value="" placeholder="Search...">
-<a class="btn btn-primary" href="<?php echo site_url('user/search') ?>">
-            Go
-          </a>
+<input type="submit" class="btn btn-primary" value="Search">
   <legend>Data user</legend>
   <div class="col-xs-12 col-sm-12 col-md-12">
   <?php if (isset($user)) { ?>
@@ -89,7 +88,7 @@
     </table>
     <?php echo $links ?>
   <?php } else { ?>
-  <div>Tuser_idak ada data</div>
+  <div>User tidak ada data</div>
   <?php } ?>
   </div>
 </div>

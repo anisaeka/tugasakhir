@@ -60,8 +60,13 @@ public function getTotal()
 public function search($search)
     {
 
-      $this->db->where('email', $search);
-        return $query->result();
+      $this->db->select('*');
+      $this->db->like('user_id',$search);
+      $this->db->or_like('nama',$search);
+      $this->db->or_like('nim',$search);
+      $this->db->or_like('email',$search);
+      $query = $this->db->get("users");
+      return $query->result();
     }
 
 public function user_level()

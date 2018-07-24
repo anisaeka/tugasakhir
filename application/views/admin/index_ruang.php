@@ -2,10 +2,10 @@
 
 <div class="container">
 
+<?php echo form_open("Ruang/search")?>
 <input class="form-control" type="text" name="search" value="" placeholder="Search...">
-<a class="btn btn-primary" href="<?php echo site_url('ruang/search') ?>">
-            Go
-          </a>
+<input type="submit"  class="btn btn-primary" value="Search">
+<?php echo form_close() ?>
   <legend>Data Ruang</legend>
   <div class="col-xs-12 col-sm-12 col-md-12">
   <?php if (isset($ruang)) { ?>
@@ -58,7 +58,7 @@
         <?php } ?>
       </tbody>
     </table>
-    <?php echo $links ?>
+    <?php echo (isset($links) ? $links : "") ?>
   <?php } else { ?>
   <div>Tidak ada data</div>
   <?php } ?>

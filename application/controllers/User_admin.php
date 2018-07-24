@@ -60,6 +60,20 @@ class user_admin extends CI_Controller {
         $this->load->view('admin/index_user',$data);
     }
 
+    public function search(){
+ 
+      if($this->input->post('search') != null){
+        $this->load->model('user_admin_model');
+        $search = $this->user_admin_model->search($this->input->post('search'));
+        $data = [
+        'user_admin' => $search,
+      ];
+      $this->load->view('admin/index_user', $data);
+    } else {
+        echo"data user tidak ditemukan";
+      }
+    }
+
     public function create(){
         $this->load->model('user_admin_model');
 	$data =[
@@ -155,27 +169,6 @@ public function destroy($user_id)
       redirect('user_admin');
      
 }
-
-public function search(){
- 
-  if($this->input->post('search')){
-    $this->load->model('user_admin_model');
-    $search= $this->user_admin_model->search($search);
-  
-    $data = [
-    'data' => $search
-  ];
-  $this->load->view('admin/index-user', $data);
-} else {
-    echo"data tuser_idak ditemukan";
-  }
-}
-
-
-
-
-
-
 }
 
 /* End of file Controllername.php */

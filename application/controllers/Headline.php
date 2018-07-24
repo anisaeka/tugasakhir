@@ -58,6 +58,20 @@
         $this->load->view('admin/index_headline',$data);
      }
 
+     public function search()
+     {
+        if($this->input->post('search') != null){
+          $this->load->model('headline_model');
+          $search = $this->headline_model->search($this->input->post('search'));
+          $data = [
+          'headline' => $search,
+        ];
+        $this->load->view('admin/index_headline', $data);
+      } else {
+          echo"data tidak ditemukan";
+        }
+      }
+
      public function create()
      {
          $this->load->model('headline_model');
@@ -69,7 +83,7 @@
                  
                 
                  $this->form_validation->set_rules('keterangan', 'Isi Keterangan', 'required|min_length[5]|max_length[30]');
-                 $this->form_validation->set_rules('defile', 'Isi File', 'required');
+                 $this->form_validation->set_rules('gambar', 'Isi File Gambar', 'required');
                  
  
                  if ($this->form_validation->run() == FALSE)

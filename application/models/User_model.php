@@ -52,10 +52,10 @@ class User_model extends CI_Model {
         }
     }
 
-    function get_user_details($user_id)
+    function get_user_details($username)
     {
-        $this->db->join('levels', 'levels.level_id = users.fk_level_id', 'left');
-        $this->db->where('user_id', $user_id);
+        //$this->db->join('levels', 'levels.level_id = users.fk_level_id', 'left');
+        $this->db->where('username', $username);
 
         $result = $this->db->get('users');
 
@@ -65,5 +65,10 @@ class User_model extends CI_Model {
             return false;
         }
     }
+    public function get_headline()
+	{
+		$query = $this->db->get('headline');
+		return $query->result();
+	}
 
 }

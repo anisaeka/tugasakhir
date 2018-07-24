@@ -74,6 +74,7 @@ class User extends CI_Controller{
 
 			// Login user
 			$user_id = $this->user_model->login($username, $password);
+			
 
 			if($user_id){
 				// Buat session
@@ -91,7 +92,7 @@ class User extends CI_Controller{
 				$this->session->set_flashdata('user_loggedin', 'Anda sudah login');
 
 				$levels = $this->db->select('fk_level_id');
-				if($levels){
+				if($user_data['level'] == '1'){
 					
 					$this->load->view('admin/index');
 					
@@ -133,9 +134,16 @@ class User extends CI_Controller{
 		$data['user'] = $this->user_model->get_user_details( $user_id );
 
 		// Load view
-		$this->load->view('templates/header', $data, FALSE);
-		$this->load->view('users/dashboard', $data, FALSE);
-		$this->load->view('templates/footer', $data, FALSE);
+		//$this->load->view('templates/header', $data, FALSE);
+		$this->load->view('users/index', $data, FALSE);
+		//$this->load->view('templates/footer', $data, FALSE);
 	}
-
+	public function hasil()
+	{
+		
+		$data = array(
+			'headline' => $this->user_model->get_headline()
+		);
+		$this->load->view('users/index', $data);
+	}
 }

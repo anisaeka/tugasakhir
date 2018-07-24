@@ -3,27 +3,27 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ruang extends CI_Controller {
+class User_pencarian extends CI_Controller {
 
     public function __construct()
 {
   parent::__construct();
   $this->load->helper('url', 'form');
   $this->load->library('form_validation','pagination');
-  $this->load->model('ruang_model');
+  $this->load->model('user_pencarian_model');
 }
     public function index()
     {
-        $total = $this->ruang_model->getTotal();
+        $total = $this->user_pencarian_model->getTotal();
         if ($total > 0) {
                       $limit = 2;
                       $start = $this->uri->segment(3, 0);
           
                       $config = [
-                        'base_url' => base_url() . 'admin/index_ruang',
+                        'base_url' => base_url() . 'index.php/user_pencarian/pencarian',
                         'total_rows' => $total,
                         'per_page' => $limit,
-                       'uri_segment' => 3,
+                        'uri_segment' => 3,
         
                         // Bootstrap 3 Pagination
                         'first_link' => '&laquo;',
@@ -48,46 +48,37 @@ class Ruang extends CI_Controller {
                       $this->pagination->initialize($config);
 
 
-        $ruang = $this->ruang_model->list($limit,$start);
+        $jadwal = $this->user_pencarian_model->list($limit,$start);
         $data=[ 
-          'ruang'=> $ruang,
+          'pencarian'=> $jadwal,
           'links' => $this->pagination->create_links()
         ];
       }
-        $this->load->view('admin/index_ruang',$data);
-    }
-
-    public function search(){
-      if($this->input->post('search') != null){
-        $this->load->model('ruang_model');
-        $search= $this->ruang_model->search($this->input->post('search'));
-        $data = [
-          'ruang' => $search,
-      ];
-      $this->load->view('admin/index_ruang', $data);
-    } else {
-        echo"data tidak ditemukan";
-      }
+        $this->load->view('users/pencarian',$data);
     }
 
     public function create(){
-      $this->load->model('jadwal_model');
-        $data =[ 'ruang' => $this->jadwal_model->ruang() ];
-        $this->load->view('admin/create_ruang', $data);
+        
+        $this->load->view('users/pencarian');
         
     }
     public function store()
     {
         
         $data = [
+            'mata_kuliah'=>$this->input->post('mata_kuliah'),
+            'dosen'=>$this->input->post('dosen'),
+            'hari'=>$this->input->post('hari'),
+            'jam'=>$this->input->post('jam'),
+            'mulai_jam'=>$this->input->post('mulai_jam'),
+            'akhir_jam'=>$this->input->post('akhir_jam'),
             'nama_ruang'=>$this->input->post('nama_ruang'),
-            'jenis_ruang'=>$this->input->post('jenis_ruang'),
-            'gedung'=>$this->input->post('gedung')
+            'kelas'=>$this->input->post('kelas')
         ];
         $rules = [
           [
-            'field' => 'nama_ruang',
-            'label' => 'Nama Ruang',
+            'field' => 'mata_kuliah',
+            'label' => 'Mata Kuliah',
             'rules' => 'trim|required'
           ]
         ];
@@ -97,67 +88,89 @@ class Ruang extends CI_Controller {
       
         if ($this->form_validation->run()) {
             
-            $this->load->model('ruang_model');
+            $this->load->model('user_pencarian_model');
             
-          $result = $this->ruang_model->insert($data);
+          $result = $this->user_pencarian_model->insert($data);
           if ($result) {
-            redirect('ruang');
+            redirect('user_pencarian');
           }
         } else {
-          redirect('ruang/create');
+          redirect('user_pencarian/create');
         }
       }
 
-public function show($nama_ruang)
+public function show($id)
 {
     
-    $this->load->model('ruang_model');
+    $this->load->model('user_pencarian_model');
     
-    $ruang = $this->ruang_model->show($nama_ruang);
+    $user_pencarian = $this->user_pencarian_model->show($id);
     $data = [
-    'data' => $ruang
+    'data' => $user_pencarian
   ];
-  $this->load->view('admin/show_ruang', $data);
+  $this->load->view('users/show_user_pencarian', $data);
 }
 
-public function edit($nama_ruang)
+public function edit($id)
     {
       // TODO: tampilkan view edit data
       
-      $this->load->model('ruang_model');
-      $ruang = $this->ruang_model->show($nama_ruang);
+      $this->load->model('user_jadwal_model');
+      $jadwal = $this->user_jadwal_model->show($id);
       $data = [
-        'data' => $ruang
+        'data' => $jadwal
       ];
       if(isset($_POST['simpan'])){
-          $this->update($nama_ruang);
-          redirect('ruang');
+          $this->update($id);
+          redirect('pencarian');
       }
 
-      $this->load->view('admin/edit_ruang',$data);
+      $this->load->view('users/edit_jadwal',$data);
       
       
     }
 
-public function update($nama_ruang)
+public function update($id)
 {
       // TODO: implementasi update data berdasarkan $id
       
-     $this->load->model('ruang_model');
-     $pegawai = $this->ruang_model->update($nama_ruang, $data = []);
+     $this->load->model('jadwal_model');
+     $pegawai = $this->jadwal_model->update($id, $data = []);
      
-     redirect('ruang');
+     redirect('jadwal');
      
 }
 
-public function destroy($nama_ruang)
+public function destroy($id)
 {
       // TODO: implementasi penghapusan data berdasarkan $id
-      $this->load->model('ruang_model');
-      $pegawai = $this->ruang_model->delete($nama_ruang);
-      redirect('ruang');
+      $this->load->model('jadwal_model');
+      $pegawai = $this->jadwal_model->delete($id);
+      redirect('jadwal');
      
 }
 
+public function search(){
+ 
+  if($this->input->post('search')){
+    $this->load->model('jadwal_model');
+    $search= $this->jadwal_model->search($search);
+  
+    $data = [
+    'data' => $search
+  ];
+  $this->load->view('admin/index-jadwal', $data);
+} else {
+    echo"data tidak ditemukan";
+  }
 }
+
+
+
+
+
+
+}
+
 /* End of file Controllername.php */
+

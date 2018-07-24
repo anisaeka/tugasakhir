@@ -34,10 +34,18 @@ public function getTotal()
   return $this->db->count_all('jadwal_kuliah');
 }
 
+public function search($search)
+    {
+      $this->db->select('*');
+      $this->db->like('id',$search);
+      $query = $this->db->get("headline");
+      return $query->result();
+    }
+
 public function upload(){
-    $config['upload_path'] = 'assets/image/';
+    $config['upload_path'] = '.assets/image/';
     $config['allowed_types'] = 'jpg|png|jpeg';
-    $config['max_size']	= '2048';
+    $config['max_size']	= '20000000';
     $config['remove_space'] = TRUE;
 
     $this->load->library('upload', $config); // Load konfigurasi uploadnya
