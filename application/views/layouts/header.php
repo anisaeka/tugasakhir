@@ -15,6 +15,7 @@
 
 </head>
 <body>
+<?php if($this->session->userdata('logged_in')) : ?>
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -34,8 +35,9 @@
 			</div>
 		</div>
 	</div>
-
+	<?php endif; ?>
 	<!-- modal input -->
+	<?php if($this->session->userdata('logged_in')) : ?>
 	<div id="modalpesan" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -62,7 +64,8 @@
 					</a>
 				</div>
 		</div>
-
+		<?php endif; ?>
+		<?php if($this->session->userdata('logged_in')) : ?>
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="<?php echo site_url('welcome/')?>"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>			
@@ -73,4 +76,6 @@
 			<li><a href="<?php echo site_url('user/logout')?>"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>			
 		</ul>
 	</div>
+	<?php endif; ?>
 	<div class="col-md-10">
+	

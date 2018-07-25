@@ -35,8 +35,7 @@ public function update($id, $data = [])
     'mulai_jam'=>$this->input->post('mulai_jam'),
     'akhir_jam'=>$this->input->post('akhir_jam'),
     'nama_ruang'=>$this->input->post('nama_ruang'),
-    'kelas'=>$this->input->post('kelas'),
-    'status'=>$this->input->post('status')
+    'kelas'=>$this->input->post('kelas')
   ];
     $this->db->where('id', $id);
     $this->db->update('jadwal_kuliah', $data);
@@ -69,7 +68,6 @@ public function search($search)
       $this->db->or_like('kelas',$search);
       $this->db->or_like('nama_ruang',$search);
       $query = $this->db->get("jadwal_kuliah");
-      $this->db->or_like('status',$search);
       return $query->result();
     }
 

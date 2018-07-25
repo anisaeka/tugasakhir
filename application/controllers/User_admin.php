@@ -77,6 +77,9 @@ class user_admin extends CI_Controller {
     }
 
     public function create(){
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
         $this->load->model('user_admin_model');
 	$data =[
 	'user_level' => $this->user_admin_model->user_level()
@@ -134,7 +137,9 @@ public function show($user_id)
 public function edit($user_id)
     {
       // TODO: tampilkan view edit data
-      
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
       $this->load->model('user_admin_model');
       $user = $this->user_admin_model->show($user_id);
       $user_level = $this->user_admin_model->user_level();
@@ -155,7 +160,9 @@ public function edit($user_id)
 public function update($user_id)
 {
       // TODO: implementasi update data berdasarkan $user_id
-      
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
      $this->load->model('user_admin_model');
      $pegawai = $this->user_admin_model->update($user_id, $data = []);
      
@@ -165,6 +172,9 @@ public function update($user_id)
 
 public function destroy($user_id)
 {
+  if(!$this->session->userdata('logged_in')){
+    redirect('user/login');
+}
       // TODO: implementasi penghapusan data berdasarkan $user_id
       $this->load->model('user_admin_model');
       $pegawai = $this->user_admin_model->delete($user_id);

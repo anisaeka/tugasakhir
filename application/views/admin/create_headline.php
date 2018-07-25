@@ -2,7 +2,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!-- Begin page content -->
 <?php $this->load->view('layouts/header') ?>
-
+<?php if($this->session->userdata('logged_in')) : ?>
 <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -37,5 +37,5 @@
                             <!-- /.table-responsive -->
                         </div>
       </div>
-
+      <?php endif; ?>
 <?php $this->load->view('layouts/footer') ?>

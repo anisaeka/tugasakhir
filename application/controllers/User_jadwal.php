@@ -113,6 +113,9 @@ public function show($id)
 
 public function edit($id)
     {
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
       // TODO: tampilkan view edit data
       
       $this->load->model('user_jadwal_model');
@@ -133,7 +136,9 @@ public function edit($id)
 public function update($id)
 {
       // TODO: implementasi update data berdasarkan $id
-      
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
      $this->load->model('jadwal_model');
      $pegawai = $this->jadwal_model->update($id, $data = []);
      

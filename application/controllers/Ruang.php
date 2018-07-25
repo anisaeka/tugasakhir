@@ -69,6 +69,9 @@ class Ruang extends CI_Controller {
     }
 
     public function create(){
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
       $this->load->model('jadwal_model');
         $data =[ 'ruang' => $this->jadwal_model->ruang() ];
         $this->load->view('admin/create_ruang', $data);
@@ -108,7 +111,9 @@ class Ruang extends CI_Controller {
 
 public function show($nama_ruang)
 {
-    
+  if(!$this->session->userdata('logged_in')){
+    redirect('user/login');
+}
     $this->load->model('ruang_model');
     
     $ruang = $this->ruang_model->show($nama_ruang);
@@ -121,7 +126,9 @@ public function show($nama_ruang)
 public function edit($nama_ruang)
     {
       // TODO: tampilkan view edit data
-      
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
       $this->load->model('ruang_model');
       $ruang = $this->ruang_model->show($nama_ruang);
       $data = [
@@ -140,7 +147,9 @@ public function edit($nama_ruang)
 public function update($nama_ruang)
 {
       // TODO: implementasi update data berdasarkan $id
-      
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
      $this->load->model('ruang_model');
      $pegawai = $this->ruang_model->update($nama_ruang, $data = []);
      
@@ -151,6 +160,9 @@ public function update($nama_ruang)
 public function destroy($nama_ruang)
 {
       // TODO: implementasi penghapusan data berdasarkan $id
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
       $this->load->model('ruang_model');
       $pegawai = $this->ruang_model->delete($nama_ruang);
       redirect('ruang');

@@ -1,5 +1,5 @@
 <?php $this->load->view('layouts/header') ?>
-
+<?php if($this->session->userdata('logged_in')) : ?>
 <div class="container">
   <legend>Tambah Jadwal</legend>
   <div class="col-xs-12 col-sm-12 col-md-12">
@@ -50,5 +50,5 @@
   <?php echo form_close() ?>
   </div>
 </div>
-
+<?php endif; ?>
 <?php $this->load->view('layouts/footer') ?>

@@ -1,4 +1,5 @@
 <?php $this->load->view('layouts/header') ?>
+<?php if($this->session->userdata('logged_in')) : ?>
 <div class="container">
 
 <?php echo form_open("Ruang/search")?>
@@ -63,5 +64,5 @@
   <?php } ?>
   </div>
 </div>
-
+<?php endif; ?>
 <?php $this->load->view('layouts/footer') ?>

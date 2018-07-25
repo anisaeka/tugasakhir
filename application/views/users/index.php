@@ -1,8 +1,9 @@
 <?php $this->load->view('users/layouts/header') ?>
-
-
+<?php if($this->session->userdata('logged_in')) : ?>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
+    
+ 
     <ol class="carousel-indicators">
       <li data-target="#myarouselC" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -13,23 +14,31 @@
 </td>
 </td>
     <!-- Wrapper for slides -->
+    <form action="<?php echo base_url('home/hasil')?>" action="GET">
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="<?php echo base_url() .'assets/image/logo.png' ?>" style="width:55%" height="35%" alt="Image">
+      <?php foreach ($gambar as $key) { ?>
+        
+        <img src="<?php echo base_url() .'assets/image/'. $key->gambar ?>" style="width:30%" height="35%" alt="Image">
+    
+   
         <div class="carousel-caption">
          <!-- <h3>Sell $</h3>
           <p>Money Money.</p> -->
         </div>      
       </div>
 
-      <div class="item">
-        <img src="<?php echo base_url() .'assets/image/logo.png' ?>" style="width:55%" height="35%" alt="Image">
-        <div class="carousel-caption">
+
+    
+      </form>
+     
          <!-- <h3>More Sell $</h3>
           <p>Lorem ipsum...</p>-->
         </div>      
       </div>
+      
     </div>
+    <?php } ?>
 
     <!-- Left and right controls -->
    
@@ -56,7 +65,7 @@
   </div>
 </div>
 
-
+<?php endif; ?>
 <br>
   <?php $this->load->view('users/layouts/footer') ?>
 </br>

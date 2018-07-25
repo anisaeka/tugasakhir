@@ -101,7 +101,9 @@ class User_pencarian extends CI_Controller {
 
 public function show($id)
 {
-    
+  if(!$this->session->userdata('logged_in')){
+    redirect('user/login');
+}
     $this->load->model('user_pencarian_model');
     
     $user_pencarian = $this->user_pencarian_model->show($id);
@@ -114,7 +116,9 @@ public function show($id)
 public function edit($id)
     {
       // TODO: tampilkan view edit data
-      
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
       $this->load->model('user_jadwal_model');
       $jadwal = $this->user_jadwal_model->show($id);
       $data = [
@@ -133,7 +137,9 @@ public function edit($id)
 public function update($id)
 {
       // TODO: implementasi update data berdasarkan $id
-      
+      if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
      $this->load->model('jadwal_model');
      $pegawai = $this->jadwal_model->update($id, $data = []);
      
@@ -143,6 +149,9 @@ public function update($id)
 
 public function destroy($id)
 {
+  if(!$this->session->userdata('logged_in')){
+    redirect('user/login');
+}
       // TODO: implementasi penghapusan data berdasarkan $id
       $this->load->model('jadwal_model');
       $pegawai = $this->jadwal_model->delete($id);

@@ -71,39 +71,50 @@
         }
       }
 
-     public function create()
-     {
-         $this->load->model('headline_model');
-         $data['id'] = $this->session->userdata('id');
+      public function hasil()
+      {
+          $this->load->model('headline_model');
+          $data ['gambar'] = $this->headline_model->list2();
 
-         $this->load->helper(array('form', 'url'));
+          $this->load->view('users/index',$data);
+      }
+
+      public function create()
+      {
+        if(!$this->session->userdata('logged_in')){
+            redirect('user/login');
+        }
+          $this->load->model('headline_model');
+          $data['id'] = $this->session->userdata('id');
  
-         $this->load->library('form_validation');
+          $this->load->helper(array('form', 'url'));
+  
+          $this->load->library('form_validation');
+                  
                  
-                
-                 $this->form_validation->set_rules('keterangan', 'Isi Keterangan', 'required|min_length[5]|max_length[30]');
-                 $this->form_validation->set_rules('gambar', 'Isi File Gambar', 'required');
-                 
- 
-                 if ($this->form_validation->run() == FALSE)
-                 {
-                    $this->load->view('admin/create_headline',$data);
-                 }
-                         $this->load->model('headline_model');
-                         $data = array();
- 
-                         if ($this->input->post('submit')) {
-                             $upload = $this->headline_model->upload();
- 
-                         if ($upload['result'] == 'success') {
-                             $this->headline_model->insert($upload);
-                             redirect('headline/index');
-                             }else{
-                             $data['message'] = $upload['error'];
-                             }
-                         }
-                    
-     }
+                  $this->form_validation->set_rules('keterangan', 'Isi Keterangan', 'required|min_length[5]|max_length[30]');
+                  $this->form_validation->set_rules('defile', 'Isi File', 'required');
+                  
+  
+                  if ($this->form_validation->run() == FALSE)
+                  {
+                     $this->load->view('admin/create_headline',$data);
+                  }
+                          $this->load->model('headline_model');
+                          $data = array();
+  
+                          if ($this->input->post('submit')) {
+                              $upload = $this->headline_model->upload();
+  
+                          if ($upload['result'] == 'success') {
+                              $this->headline_model->insert($upload);
+                              redirect('headline/index');
+                              }else{
+                              $data['message'] = $upload['error'];
+                              }
+                          }
+                     
+      }
     public function store()
     {
         
@@ -181,6 +192,9 @@
 
     public function destroy($id)
 {
+    if(!$this->session->userdata('logged_in')){
+        redirect('user/login');
+    }
       // TODO: implementasi penghapusan data berdasarkan $id
       $this->load->model('headline_model');
       $headline = $this->headline_model->delete($id);

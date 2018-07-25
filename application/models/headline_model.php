@@ -10,6 +10,11 @@
       $query = $this->db->get('headline',$limit, $start);
       return ($query->num_rows() > 0) ? $query->result() : false;
     }
+    public function list2()
+    {
+      $query = $this->db->get('headline');
+      return $query->result();
+    }
 
     public function insert($upload)
 	{
@@ -43,23 +48,24 @@ public function search($search)
       return $query->result();
     }
 
-public function upload(){
-    $config['upload_path'] = '.assets/image/';
-    $config['allowed_types'] = 'jpg|png|jpeg';
-    $config['max_size']	= '20000000';
-    $config['remove_space'] = TRUE;
 
-    $this->load->library('upload', $config); // Load konfigurasi uploadnya
-    if($this->upload->do_upload('gambar')){ // Lakukan upload dan Cek jika proses upload berhasil
-        // Jika berhasil :
-        $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
-        return $return;
-    }else{
-        // Jika gagal :
-        $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
-        return $return;
+    public function upload(){
+        $config['upload_path'] = 'assets/image/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size']	= '20000000';
+        $config['remove_space'] = TRUE;
+    
+        $this->load->library('upload', $config); // Load konfigurasi uploadnya
+        if($this->upload->do_upload('gambar')){ // Lakukan upload dan Cek jika proses upload berhasil
+            // Jika berhasil :
+            $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
+            return $return;
+        }else{
+            // Jika gagal :
+            $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+            return $return;
+        }
     }
-}
  
  }
  

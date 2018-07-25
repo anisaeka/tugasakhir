@@ -4,7 +4,7 @@
 $this->load->view('layouts/header');
 
 ?>
-
+<?php if($this->session->userdata('logged_in')) : ?>
 <div class="col-md-10">
 	<h3>Selamat datang</h3>	
     <h3>Sistem Informasi Pengelola Jadwal</h3>
@@ -16,7 +16,7 @@ $this->load->view('layouts/header');
 <div class="pull-right">
 	<div id="kalender"></div>
 </div>
-
+<?php endif; ?>
 <?php
 
 $this->load->view('layouts/footer');

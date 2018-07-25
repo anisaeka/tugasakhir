@@ -1,5 +1,5 @@
 <?php $this->load->view('layouts/header') ?>
-
+<?php if($this->session->userdata('logged_in')) : ?>
 <div class="container">
 
 <?php echo form_open("Jadwal/search") ?>
@@ -20,7 +20,6 @@
         <th>Jam Berakhir</th>
         <th>Nama Ruang</th>
         <th>Kelas</th>
-        <th>Status</th>
         <th>
           <a class="btn btn-primary" href="<?php echo site_url('jadwal/create') ?>">
             Tambah
@@ -80,11 +79,7 @@
               <?php echo $row->kelas ?>
             </a>
           </td>
-          <td>
-            <a href="<?php echo site_url('jadwal/show/'.$row->id) ?>">
-              <?php echo $row->status ?>
-            </a>
-          </td>
+          
           
           <td>
             <?php echo form_open('jadwal/destroy/'.$row->id)  ?>
@@ -104,5 +99,5 @@
   <?php } ?>
   </div>
 </div>
-
+<?php endif; ?>
 <?php $this->load->view('layouts/footer') ?>

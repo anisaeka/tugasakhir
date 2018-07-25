@@ -1,5 +1,6 @@
 <?php $this->load->view('users/layouts/header') ?>
 
+<?php if($this->session->userdata('logged_in')) : ?>
 <div class="container">
 <?php echo form_open('search/search'); ?>
 <legend>Pencarian</legend>
@@ -48,4 +49,5 @@ Pencarian Kelas JTI
 <?php echo (isset($hasil) ? $hasil : "") ?>
 </div>
 </div>
+<?php endif; ?>
 <?php $this->load->view('users/layouts/footer') ?>

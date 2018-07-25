@@ -46,16 +46,16 @@ class User_model extends CI_Model {
         $result = $this->db->get('users');
 
         if($result->num_rows() == 1){
-            return $result->row(0);
+            return $result->row(0)->fk_level_id;
         } else {
             return false;
         }
     }
 
-    function get_user_details($username)
+    function get_user_details($user_id)
     {
         //$this->db->join('levels', 'levels.level_id = users.fk_level_id', 'left');
-        $this->db->where('username', $username);
+        $this->db->where('username', $user_id);
 
         $result = $this->db->get('users');
 
@@ -65,10 +65,18 @@ class User_model extends CI_Model {
             return false;
         }
     }
+ 
+
+    /*
     public function get_headline()
 	{
 		$query = $this->db->get('headline');
 		return $query->result();
 	}
 
+    public function list2()
+    {
+      $query = $this->db->get('headline');
+      return $query->result();
+    }*/
 }
