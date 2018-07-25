@@ -1,7 +1,7 @@
 <?php $this->load->view('users/layouts/header') ?>
 
 <div class="container">
-
+<?php echo form_open('search/search'); ?>
 <legend>Pencarian</legend>
 <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -40,7 +40,7 @@ Pencarian Kelas JTI
 </div>
 <center>
 <button type="submit" class="btn btn-primary">Search</button>
-
+<?php echo form_close() ?>
 
 <button type="reset" class="btn btn-success">Cancel</button>
 </center>
