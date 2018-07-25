@@ -21,20 +21,8 @@ class search_model extends CI_Model {
              akhir_jam <= $jam_awal and akhir_jam <=$jam_akhir or
              mulai_jam >= $jam_awal and mulai_jam >=$jam_akhir" ;
         
-            
-    $sql0 = "select nama_ruang from ruang_kelas where nama_ruang not in 
-    ( select nama_ruang from jadwal_kuliah) union all 
-    SELECT nama_ruang from jadwal_kuliah where akhir_jam <= $jam_akhir";
-
-    $sql1 =" select ruang_kelas.nama_ruang
-    FROM jadwal_kuliah
-    RIGHT JOIN ruang_kelas ON jadwal_kuliah.nama_ruang = ruang_kelas.nama_ruang
-    ORDER BY (select nama_ruang from jadwal_kuliah where hari = '$hari' and  mulai_jam != $jam_awal and akhir_jam!= $jam_akhir)";
     
-    $sql2 = " select nama_ruang from ruang_kelas
-            union
-            select nama_ruang from jadwal_kuliah where hari = '$hari' and  
-            mulai_jam != $jam_awal and akhir_jam!= $jam_akhir";
+    
     $query = $this->db->query($sql);
     return $query->result();
   }

@@ -91,6 +91,22 @@ public function index()
       }
     }
 
+    public function show($nama_ruang)
+{
+  if(!$this->session->userdata('logged_in')){
+    redirect('user/login');
+}
+    $this->load->model('ruang_model');
+    
+    $ruang = $this->ruang_model->show($nama_ruang);
+    $data = [
+    'data' => $ruang
+  ];
+  $this->load->view('users/details_pencarian', $data);
+}
+ public function back(){
+   redirect('search/search');
+ }
 
 
 
