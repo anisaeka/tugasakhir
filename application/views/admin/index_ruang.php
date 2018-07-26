@@ -5,6 +5,7 @@
 <?php echo form_open("Ruang/search")?>
 <input class="form-control" type="text" name="search" value="" placeholder="Search...">
 <input type="submit"  class="btn btn-primary" value="Search">
+<a href="<?php echo site_url("/ruang/"); ?>" class="btn btn-primary">Show All</a>
 <?php echo form_close() ?>
   <legend>Data Ruang</legend>
   <div class="col-xs-12 col-sm-12 col-md-12">
