@@ -18,7 +18,7 @@ class Ruang extends CI_Controller {
                       $start = $this->uri->segment(3, 0);
           
                       $config = [
-                        'base_url' => base_url() . 'admin/index_ruang',
+                        'base_url' => base_url() . 'index.php/ruang/index',
                         'total_rows' => $total,
                         'per_page' => $limit,
                        'uri_segment' => 3,

@@ -20,7 +20,7 @@ class Jadwal extends CI_Controller {
                       $start = $this->uri->segment(3, 0);
           
                       $config = [
-                        'base_url' => base_url() . 'admin/index_jadwal',
+                        'base_url' => base_url() . 'index.php/jadwal/index',
                         'total_rows' => $total,
                         'per_page' => $limit,
                        'uri_segment' => 3,
@@ -93,8 +93,7 @@ class Jadwal extends CI_Controller {
             'mulai_jam'=>$this->input->post('mulai_jam'),
             'akhir_jam'=>$this->input->post('akhir_jam'),
             'nama_ruang'=>$this->input->post('nama_ruang'),
-            'kelas'=>$this->input->post('kelas'),
-            'status'=>$this->input->post('status')
+            'kelas'=>$this->input->post('kelas')
         ];
         $rules = [
           [

@@ -67,6 +67,25 @@ public function search($search)
         }
     }
  
+public function update($id, $data = [])
+{
+   
+  $data=[
+    'keterangan' => $this->input->post('keterangan'),
+	'gambar' => $upload['file']['file_name']
+  ];
+    $this->db->where('id', $id);
+    $this->db->update('headline', $data);
+    
+  // TODO: set data yang akan di update
+  // https://www.codeigniter.com/userguide3/database/query_builder.html#updating-data
+}
+public function show($id)
+{
+  $this->db->where('id', $id);
+  $query = $this->db->get('headline');
+  return $query->row();
+}
  }
  
  /* End of file ModelName.php */

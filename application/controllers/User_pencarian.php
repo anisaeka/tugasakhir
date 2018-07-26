@@ -20,7 +20,7 @@ class User_pencarian extends CI_Controller {
                       $start = $this->uri->segment(3, 0);
           
                       $config = [
-                        'base_url' => base_url() . 'index.php/user_pencarian/pencarian',
+                        'base_url' => base_url() . 'index.php/user_pencarian/index',
                         'total_rows' => $total,
                         'per_page' => $limit,
                         'uri_segment' => 3,
@@ -47,135 +47,20 @@ class User_pencarian extends CI_Controller {
                      ];
                       $this->pagination->initialize($config);
 
-
+                      $this->load->model('user_model');
+                      $user_id = $this->session->userdata('user_id');
+                   $nama_user=$this->user_model->get_user_details($user_id);
         $jadwal = $this->user_pencarian_model->list($limit,$start);
         $data=[ 
           'pencarian'=> $jadwal,
-          'links' => $this->pagination->create_links()
+          'links' => $this->pagination->create_links(),
+          'nama_user' => $nama_user
         ];
       }
         $this->load->view('users/pencarian',$data);
     }
 
-    public function create(){
-        
-        $this->load->view('users/pencarian');
-        
-    }
-    public function store()
-    {
-        
-        $data = [
-            'mata_kuliah'=>$this->input->post('mata_kuliah'),
-            'dosen'=>$this->input->post('dosen'),
-            'hari'=>$this->input->post('hari'),
-            'jam'=>$this->input->post('jam'),
-            'mulai_jam'=>$this->input->post('mulai_jam'),
-            'akhir_jam'=>$this->input->post('akhir_jam'),
-            'nama_ruang'=>$this->input->post('nama_ruang'),
-            'kelas'=>$this->input->post('kelas')
-        ];
-        $rules = [
-          [
-            'field' => 'mata_kuliah',
-            'label' => 'Mata Kuliah',
-            'rules' => 'trim|required'
-          ]
-        ];
-        // Untuk rule sederhana bisa dengan menggunakan
-        // $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules($rules);
-      
-        if ($this->form_validation->run()) {
-            
-            $this->load->model('user_pencarian_model');
-            
-          $result = $this->user_pencarian_model->insert($data);
-          if ($result) {
-            redirect('user_pencarian');
-          }
-        } else {
-          redirect('user_pencarian/create');
-        }
-      }
-
-public function show($id)
-{
-  if(!$this->session->userdata('logged_in')){
-    redirect('user/login');
-}
-    $this->load->model('user_pencarian_model');
-    
-    $user_pencarian = $this->user_pencarian_model->show($id);
-    $data = [
-    'data' => $user_pencarian
-  ];
-  $this->load->view('users/show_user_pencarian', $data);
-}
-
-public function edit($id)
-    {
-      // TODO: tampilkan view edit data
-      if(!$this->session->userdata('logged_in')){
-        redirect('user/login');
-    }
-      $this->load->model('user_jadwal_model');
-      $jadwal = $this->user_jadwal_model->show($id);
-      $data = [
-        'data' => $jadwal
-      ];
-      if(isset($_POST['simpan'])){
-          $this->update($id);
-          redirect('pencarian');
-      }
-
-      $this->load->view('users/edit_jadwal',$data);
-      
-      
-    }
-
-public function update($id)
-{
-      // TODO: implementasi update data berdasarkan $id
-      if(!$this->session->userdata('logged_in')){
-        redirect('user/login');
-    }
-     $this->load->model('jadwal_model');
-     $pegawai = $this->jadwal_model->update($id, $data = []);
-     
-     redirect('jadwal');
-     
-}
-
-public function destroy($id)
-{
-  if(!$this->session->userdata('logged_in')){
-    redirect('user/login');
-}
-      // TODO: implementasi penghapusan data berdasarkan $id
-      $this->load->model('jadwal_model');
-      $pegawai = $this->jadwal_model->delete($id);
-      redirect('jadwal');
-     
-}
-
-public function search(){
- 
-  if($this->input->post('search')){
-    $this->load->model('jadwal_model');
-    $search= $this->jadwal_model->search($search);
-  
-    $data = [
-    'data' => $search
-  ];
-  $this->load->view('admin/index-jadwal', $data);
-} else {
-    echo"data tidak ditemukan";
-  }
-}
-
-
-
+   
 
 
 

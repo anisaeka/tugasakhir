@@ -1,43 +1,31 @@
 <?php $this->load->view('users/layouts/header') ?>
 <?php if($this->session->userdata('logged_in')) : ?>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
-    
- 
     <ol class="carousel-indicators">
-      <li data-target="#myarouselC" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
     </ol>
-
-<td>
-<td>
-</td>
-</td>
+    
     <!-- Wrapper for slides -->
-    <form action="<?php echo base_url('home/hasil')?>" action="GET">
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-      <?php foreach ($gambar as $key) { ?>
-        
-        <img src="<?php echo base_url() .'assets/image/'. $key->gambar ?>" style="width:30%" height="35%" alt="Image">
-    
-   
+      <center> <img src="<?php echo base_url('assets/image/header.jpg')?>" style="width:100%" alt="Image"></center>
         <div class="carousel-caption">
-         <!-- <h3>Sell $</h3>
-          <p>Money Money.</p> -->
+          
         </div>      
       </div>
-
-
-    
-      </form>
-     
-         <!-- <h3>More Sell $</h3>
-          <p>Lorem ipsum...</p>-->
+      <?php foreach ($gambar as $key) { ?>
+      <div class="item">
+      <center><img src="<?php echo base_url() .'assets/image/'. $key->gambar ?>" style="width:50%" height="35%" alt="Image"></center>
+        <div class="carousel-caption">
+          
         </div>      
       </div>
-      
     </div>
+
+
     <?php } ?>
 
     <!-- Left and right controls -->

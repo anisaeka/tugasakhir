@@ -13,8 +13,13 @@ class User extends CI_Controller{
     }
     
     public function index() {
+		$user_id = $this->session->userdata('user_id');
+		$nama_user=$this->user_model->get_user_details($user_id);
+
 		$this->load->model('headline_model');
-        $data ['gambar'] = $this->headline_model->list2();
+		$data =['gambar' => $this->headline_model->list2(),
+			'nama_user' => $nama_user
+				];
         $this->load->view('users/index',$data);
         
     }
@@ -99,8 +104,13 @@ class User extends CI_Controller{
 					$this->load->view('admin/index');
 					
 				}else{
-
-				redirect('user');
+				
+			//$nama_user = $this->user_model->get_user_details($username);
+			$nama_user=$this->user_model->get_user_details($user_id);
+			$data=['nama_user' => $nama_user];
+				
+				redirect('user/index', $data);
+				
 				}
 			} else {
 				// Set message

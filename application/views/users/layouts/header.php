@@ -3,7 +3,7 @@
 <html>
 <head>
 	
-	<title>Admin JTI</title>
+	<title>Sistem Pencarian Kelas JTI</title>
 
    <!-- Core CSS - Include with every page -->
    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css') ?>">
@@ -19,7 +19,7 @@
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="" class="navbar-brand">Sistem Informasi Pencarian Jadwal </a>
+				<a href="" class="navbar-brand">Sistem Informasi Pencarian Kelas </a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="collapse navbar-collapse">				
 				<ul class="nav navbar-nav navbar-right">
-        <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Hy ,  &nbsp&nbsp<span class="glyphicon glyphicon-user"></span></a></li>
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Hy , <?php echo $nama_user ?> &nbsp&nbsp<span class="glyphicon glyphicon-user"></span></a></li>
     </ul>
 			</div>
 		</div>
