@@ -13,14 +13,14 @@ class User_jadwal extends CI_Controller {
   $this->load->model('user_jadwal_model');
 }
     public function index()
-    {
+    {   
         $total = $this->user_jadwal_model->getTotal();
         if ($total > 0) {
                       $limit = 2;
                       $start = $this->uri->segment(3, 0);
           
                       $config = [
-                        'base_url' => base_url() . 'index.php/user_jadwal/jadwal',
+                        'base_url' => base_url() . 'index.php/user_jadwal/index',
                         'total_rows' => $total,
                         'per_page' => $limit,
                        'uri_segment' => 3,
@@ -46,12 +46,14 @@ class User_jadwal extends CI_Controller {
                         'last_tag_close' => '</li>',
                      ];
                       $this->pagination->initialize($config);
-
-
+        $this->load->model('user_model');
+        $user_id = $this->session->userdata('user_id');
+		 $nama_user=$this->user_model->get_user_details($user_id);
         $jadwal = $this->user_jadwal_model->list($limit,$start);
         $data=[ 
           'jadwal'=> $jadwal,
-          'links' => $this->pagination->create_links()
+          'links' => $this->pagination->create_links(),
+          'nama_user' => $nama_user
         ];
       }
         $this->load->view('users/jadwal',$data);
