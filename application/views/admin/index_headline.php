@@ -43,9 +43,7 @@
           
           <td>
             <?php echo form_open('headline/destroy/'.$row->id)  ?>
-            <a class="btn btn-info" href="<?php echo site_url('headline/edit/'.$row->id) ?>">
-              Ubah
-            </a>
+            
             <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
             <?php echo form_close() ?>
           </td>

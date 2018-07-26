@@ -190,6 +190,42 @@
         redirect('headline');
     }
 
+
+    public function update($id)
+    {
+          // TODO: implementasi update data berdasarkan $id
+          if(!$this->session->userdata('logged_in')){
+            redirect('user/login');
+        }
+         $this->load->model('headline_model');
+         $headline = $this->headline_model->update($id, $data = []);
+         
+         redirect('headline');
+         
+    }
+
+    
+public function edit($id)
+{
+  // TODO: tampilkan view edit data
+  if(!$this->session->userdata('logged_in')){
+    redirect('user/login');
+}
+  $this->load->model('headline_model');
+  $headline = $this->headline_model->show($id);
+  $data = [
+    'data' => $headline
+  ];
+  if(isset($_POST['simpan'])){
+      $this->update($id);
+      redirect('headline/create');
+  }
+
+  $this->load->view('admin/edit_headline',$data);
+  
+  
+}
+
     public function destroy($id)
 {
     if(!$this->session->userdata('logged_in')){
