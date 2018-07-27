@@ -21,11 +21,11 @@
       <label for="jam">Jumlah Jam</label>
       <input type="text" class="form-control" id="jam" name="jam" placeholder="Masukkan Jumlah Jam" value="<?php echo $data->jam ?>">
     </div><div class="form-group">
-      <label for="mulai_jam">Mulai Jam</label>
-      <input type="time" class="form-control" id="mulai_jam" name="mulai_jam" placeholder="Masukkan Jam Mulai" value="<?php echo $data->mulai_jam ?>">
+      <label for="mulai_jam">Mulai Jam Ke</label>
+      <input type="text" class="form-control" id="mulai_jam" name="mulai_jam" placeholder="Masukkan Jam Mulai" value="<?php echo $data->mulai_jam ?>">
     </div><div class="form-group">
-      <label for="akhir_jam">Sampai Jam</label>
-      <input type="time" class="form-control" id="akhir_jam" name="akhir_jam" placeholder="Masukkan Jam Berakhirnya " value="<?php echo $data->akhir_jam ?>">
+      <label for="akhir_jam">Sampai Jam Ke</label>
+      <input type="text" class="form-control" id="akhir_jam" name="akhir_jam" placeholder="Masukkan Jam Berakhirnya " value="<?php echo $data->akhir_jam ?>">
       <div class="form-group">
       <label for="nama_ruang">Ruang kelas</label>
       <select name="nama_ruang" class="form-control" required>

@@ -6,6 +6,7 @@
 <?php echo form_open("User_admin/search")?>
 <input class="form-control" type="text" name="search" value="" placeholder="Search...">
 <input type="submit" class="btn btn-primary" value="Search">
+<?php echo form_close() ?>
 
 <a href="<?php echo site_url("/user_admin/"); ?>" class="btn btn-primary">Show All</a>
   <legend>Data user</legend>

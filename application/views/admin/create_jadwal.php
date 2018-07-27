@@ -22,10 +22,10 @@
       <input type="text" class="form-control" id="jam" name="jam" placeholder="Masukkan Jumlah Jam">
     </div><div class="form-group">
       <label for="mulai_jam">Mulai Jam</label>
-      <input type="time" class="form-control" id="mulai_jam" name="mulai_jam" placeholder="Masukkan Jam Mulai">
+      <input type="text" class="form-control" id="mulai_jam" name="mulai_jam" placeholder="Masukkan Jam Mulai">
     </div><div class="form-group">
       <label for="akhir_jam">Sampai Jam</label>
-      <input type="time" class="form-control" id="akhir_jam" name="akhir_jam" placeholder="Masukkan Jam Berakhirnya ">
+      <input type="text" class="form-control" id="akhir_jam" name="akhir_jam" placeholder="Masukkan Jam Berakhirnya ">
       <div class="form-group">
       <label for="nama_ruang">Ruang Kelas</label>
       <select name="nama_ruang" class="form-control" required>

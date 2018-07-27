@@ -59,8 +59,12 @@ public function index()
       }
       $this->load->view('users/hasil_pencarian',$data);
       */
-
-      $data = $this->search_model->ruang();
+      $user_id = $this->session->userdata('user_id');
+      $this->load->model('user_model');
+		  $nama_user=$this->user_model->get_user_details($user_id);
+      $data = [ 'ruang' => $this->search_model->ruang(),
+      'nama_user'=> $nama_user ]
+      ;
       $this->load->view('users/hasil_pencarian',$data);
 
     }
@@ -80,8 +84,12 @@ public function index()
           /*if(($jam_awal == ($this->db->select('mulai_jam') )) && ($jam_akhir==($this->db->select('akhir_jam') ))){*/
         $this->load->model('search_model');
         $search1 = $this->search_model->search($hari,$jam_awal,$jam_akhir);
+        $this->load->model('user_model');
+        $user_id = $this->session->userdata('user_id');
+		  $nama_user=$this->user_model->get_user_details($user_id);
         $data = [
-        'ruang' => $search1
+        'ruang' => $search1,
+        'nama_user' => $nama_user
       ];
       $this->load->view('users/hasil_pencarian', $data);
       
@@ -97,10 +105,13 @@ public function index()
     redirect('user/login');
 }
     $this->load->model('ruang_model');
-    
+    $this->load->model('user_model');
+        $user_id = $this->session->userdata('user_id');
+		  $nama_user=$this->user_model->get_user_details($user_id);
     $ruang = $this->ruang_model->show($nama_ruang);
     $data = [
-    'data' => $ruang
+    'data' => $ruang,
+    'nama_user' => $nama_user
   ];
   $this->load->view('users/details_pencarian', $data);
 }

@@ -22,7 +22,7 @@
       <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username">
     </div><div class="form-group">
       <label for="password">Password</label>
-      <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan Password">
+      <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password">
     </div><div class="form-group">
     <div class="form-group">
       <label>Konfirmasi Password</label>

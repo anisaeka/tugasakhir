@@ -18,7 +18,7 @@
       <?php echo $data->gedung ?>
     </div>
 
-    <a class="btn btn-info"  href = "javascript:history.back()" >Kembali</a>
+    <a class="btn btn-info"  href = "<?php echo site_url("/search/"); ?>" >Kembali</a>
    
   <?php echo form_close() ?>
   </div>

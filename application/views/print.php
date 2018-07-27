@@ -35,9 +35,8 @@ table td
 <th>Mata Kuliah</th>
 <th>Dosen</th>
 <th>Hari</th>
-<th>Jam</th>
+<th>Jumlah Jam</th>
 <th>Nama Ruang</th>
-<th>Kelas</th>
 </tr>
 </thead>
 
@@ -51,7 +50,6 @@ foreach ($reporting as $key) { ?>
 <td><?php echo $key->hari  ?></td>
 <td><?php echo $key->jam  ?></td>
 <td><?php echo $key->nama_ruang  ?></td>
-<td><?php echo $key->kelas  ?></td>
 </tr>
 
 <?php $no++; }

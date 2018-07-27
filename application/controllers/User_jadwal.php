@@ -16,7 +16,7 @@ class User_jadwal extends CI_Controller {
     {   
         $total = $this->user_jadwal_model->getTotal();
         if ($total > 0) {
-                      $limit = 2;
+                      $limit = 6;
                       $start = $this->uri->segment(3, 0);
           
                       $config = [

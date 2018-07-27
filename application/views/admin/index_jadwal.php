@@ -18,8 +18,8 @@
         <th>Dosen</th>
         <th>Hari</th>
         <th>Jumlah Jam</th>
-        <th>Jam Mulai</th>
-        <th>Jam Berakhir</th>
+        <th>Mulai Jam Ke-</th>
+        <th>Samapai Jam Ke-</th>
         <th>Nama Ruang</th>
         <th>Kelas</th>
         <th>
